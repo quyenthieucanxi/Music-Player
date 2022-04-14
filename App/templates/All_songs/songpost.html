@@ -6,14 +6,16 @@
       <div class="col-md-4" style="padding-top: 5%;">
          <img src="/media/{{song_id.image}}" alt="" height="200px" width="300px " > 
       </div>
-      <div class="col-md-8" style="padding-top: 5%; color: red;">
-         <h2> {{song_id.title}}</h2>
-         <h2>{{song_id.artist}}</h2>
-         
-         <audio controls>
-            <source src="/media/{{song_id.audio_file}} " type="audio/mp3">
-         </audio>
+      <div class="col-md-8" style="padding-top: 4%; color: red;">
+         <h2 style="padding-top: 2%;font-weight: 550;">  {{song_id.title}}</h2>
+         <h2 style="padding-top: 2%;font-weight: 550" >{{song_id.artist}}</h2>
+         <h2 style="padding-top: 2%;font-weight: 550"  >MV: <a href="{{song_id.audio_link}} " target="blank">Click here</a> </h2>
          <div class="" style="padding-top: 2%;">
+         <audio controls >
+            <source  src="/media/{{song_id.audio_file}} " type="audio/mp3">
+         </audio>
+         </div>
+         <div class="" style="padding-top: 3%;">
          <a href="/media/{{song_id.audio_file}}"><button class="btn btn-outline-danger" >Dowload Song</button></a>
          </div>
       </div>
