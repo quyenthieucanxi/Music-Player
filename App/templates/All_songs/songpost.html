@@ -1,0 +1,25 @@
+{% extends 'All_songs/base.html' %}
+{% block title %}All Songs {% endblock %}
+{% block body %}
+<div class="container">
+   <div class="row">
+      <div class="col-md-4" style="padding-top: 5%;">
+         <img src="/media/{{song_id.image}}" alt="" height="200px" width="300px " > 
+      </div>
+      <div class="col-md-8" style="padding-top: 5%; color: red;">
+         <h2> {{song_id.title}}</h2>
+         <h2>{{song_id.artist}}</h2>
+         
+         <audio controls>
+            <source src="/media/{{song_id.audio_file}} " type="audio/mp3">
+         </audio>
+         <div class="" style="padding-top: 2%;">
+         <a href="/media/{{song_id.audio_file}}"><button class="btn btn-outline-danger" >Dowload Song</button></a>
+         </div>
+      </div>
+   </div>
+</div>
+ 
+        
+
+{% endblock %}
