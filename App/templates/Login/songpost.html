@@ -1,4 +1,4 @@
-{% extends 'All_songs/base.html' %}
+{% extends 'Login/base.html' %}
 {% block title %}All Songs {% endblock %}
 {% block body %}
 <div class="container">
@@ -15,14 +15,13 @@
             <source  src="/media/{{song_id.audio_file}} " type="audio/mp3">
          </audio>
          </div>
-         <div class="" style="padding-top: 3%;">
-
-         <div>
-         
-         
+         <div  style="padding-top: 3%;">
+         <div class="row" >
+         <form action="/Login/PersonalList/" method="POST"> {% csrf_token %}
+         <input type="hidden" name="song_id" value="{{song_id.id}}">
          <button class="btn btn-outline-danger" type="submit" >Add to PersonalList</button>
-
-         <a href="/media/{{song_id.audio_file}}"><button class="btn btn-outline-danger" >Dowload Song</button></a>  
+         </form>
+         <a href="/media/{{song_id.audio_file}}" style="padding-top: 2%;" ><button class="btn btn-outline-danger" >Dowload Song</button></a>  
          </div> 
          </div>   
       </div>

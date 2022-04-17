@@ -1,0 +1,38 @@
+{% extends 'Login/base.html' %}
+{% block title %}SignUp{% endblock %}
+{% block body %}
+    <div class="container my-4 mx">
+    <form method="POST" action="/Login/signup/" >{% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+          <div id="emailHelp" class="form-text">.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Username</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="firstname">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="lastname">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="pass1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password (again)</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="pass2">
+        </div>
+
+        
+        <button  class="btn btn-primary"><a href="/"></a> Submit </button>
+      </form>   
+    </div>
+   
+{% endblock%}
+  
