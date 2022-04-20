@@ -1,6 +1,18 @@
 {% extends 'Login/base.html' %}
 {% block title %}All Songs {% endblock %}
 {% block body %}
+{% if messages %}
+    <script>
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '{{messages}}',
+        showConfirmButton: false,
+        timer: 1500
+        })
+    </script>
+{%  endif %}
+   
 <div class="container">
    <div class="row">
       <div class="col-md-4" style="padding-top: 5%;">
@@ -16,11 +28,11 @@
          </audio>
          </div>
          <div  style="padding-top: 3%;">
-         <div class="row" >
-         <form action="/Login/PersonalList/" method="POST"> {% csrf_token %}
-         <input type="hidden" name="song_id" value="{{song_id.id}}">
-         <button class="btn btn-outline-danger" type="submit" >Add to PersonalList</button>
-         </form>
+         <div class="row " >
+            <form action="/Login/PersonalList/" method="POST"> {% csrf_token %}
+               <input type="hidden" name="song_id" value="{{song_id.id}}">
+               <button class="btn btn-outline-danger" type="submit" >Add to PersonalList</button>
+            </form>
          <a href="/media/{{song_id.audio_file}}" style="padding-top: 2%;" ><button class="btn btn-outline-danger" >Dowload Song</button></a>  
          </div> 
          </div>   

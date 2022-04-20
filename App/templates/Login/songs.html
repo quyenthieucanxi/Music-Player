@@ -3,8 +3,9 @@
 {% block body %}
 
 <div class="container">
-<div class="row" style="padding-top: 2%;padding-left: 7%;" >
+<div class="row row-cols-3" style="padding-top: 2%;padding-left: 7%;" >
     {% for i in song %}
+    <div class="col">
     <div style="padding-left: 2%;">
         <div class="card" style="width: 18rem;">
             <img src="/media/{{i.image}}" class="card-img-top" alt="...">
@@ -14,6 +15,7 @@
             <a href="/Login/songs/{{i.id}}" class="btn btn-primary">Listen</a>
             </div>
         </div>
+    </div>
     </div>
     {% endfor %}
 </div>  

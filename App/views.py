@@ -25,6 +25,11 @@ def login_songpost(request,id):
 def songpost(request,id):
     song= Song.objects.all()
     song_id=Song.objects.filter(pk=id).first()
+    '''if request.method == "POST":
+        message = 'You need to login'
+        return redirect(request,f'/All_songs/songs/{{song_id.id}}',{'song': song,'song_id': song_id,'message':message})
+    else:
+        message= ""'''
     return render(request,'All_songs/songpost.html',{'song': song,'song_id': song_id})
 def login(request):
     if request.method == "POST":
@@ -59,10 +64,21 @@ def signup(request):
 def personallist(request):
     if request.method == "POST":
         user = request.user
-        song =request.POST['song_id']
-        personallist= PersonalList(user= user,song_id= song)
-        personallist.save()
-        return redirect(f'/Login/songs/{song}')
+        song_id =request.POST['song_id']
+        personal_list= PersonalList.objects.filter(user=user)
+        for i in personal_list:
+            if song_id == i.song_id:
+                messages = "Your Song is Already Added"
+                break
+        else:   
+            personallist= PersonalList(user= user,song_id= song_id)
+            personallist.save()
+            messages = "Your Song is Succesfully Added"
+        
+        song_id=Song.objects.filter(id=song_id).first()
+        #song= Song.objects.all()
+        return render(request,"Login/songpost.html",{'messages': messages,'song_id':song_id})       
+        #return redirect(f'/Login/songs/{song}',{'song_id':song_id,'messages':messages})
     personal_list= PersonalList.objects.filter(user=request.user)
     listSong= []
     for i in personal_list:

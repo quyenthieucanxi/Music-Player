@@ -70,8 +70,9 @@
       </div>
       <!-- ########################### Card ########################################### -->
     <h2 style="padding-left: 8%;padding-top: 2%;font-family: 'Verdana';">Trending Songs</h2>
-    <div class="row" style="padding-top: 2%;padding-left: 7%;" >
+    <div class="row row-cols-3" style="padding-top: 2%;padding-left: 7%;" >
         {% for i in song %}
+      <div class="col">
         <div style="padding-left: 2%;">
             <div class="card" style="width: 18rem;">
                 <img src="/media/{{i.image}}" class="card-img-top" alt="...">
@@ -82,6 +83,7 @@
                 </div>
             </div>
         </div>
+      </div>
         {% endfor %}
     </div>
     

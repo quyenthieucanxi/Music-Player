@@ -1,6 +1,18 @@
 {% extends 'All_songs/base.html' %}
 {% block title %}All Songs {% endblock %}
 {% block body %}
+<!-- {% if massage %}
+<script>
+   Swal.fire({
+   position: 'top-end',
+   icon: 'warning',
+   title: '{{message}}',
+   showConfirmButton: false,
+   timer: 1500
+   })
+</script>
+
+{% endif%} -->
 <div class="container">
    <div class="row">
       <div class="col-md-4" style="padding-top: 5%;">
@@ -15,14 +27,15 @@
             <source  src="/media/{{song_id.audio_file}} " type="audio/mp3">
          </audio>
          </div>
-         <div class="" style="padding-top: 3%;">
-
-         <div>
          
-         
-         <button class="btn btn-outline-danger" type="submit" >Add to PersonalList</button>
-
-         <a href="/media/{{song_id.audio_file}}"><button class="btn btn-outline-danger" >Dowload Song</button></a>  
+         <div class="container" style="padding-top: 2%;">
+            <form action="/All_songs/songs/{{song_id.id}}" method="POST">{% csrf_token %}
+            <input type="hidden" name="check">
+            <button class="btn btn-outline-danger " type="submit"  >Add to PersonalList</button>
+            </form>
+            <div class="" style="padding-top: 3%;">
+            <a href="/media/{{song_id.audio_file}}" style="padding-left: 1%;padding-right: 1%;"><button class="btn btn-outline-danger" >Dowload Song</button></a>  
+            <button class="btn btn-outline-danger" type="submit">  Remove from personal list</button>
          </div> 
          </div>   
       </div>
