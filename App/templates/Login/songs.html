@@ -12,7 +12,14 @@
             <div class="card-body">
             <h5 class="card-title" style="color: Red">{{i.title}} </h5>
             <p class="card-text">{{i.artist}}</p>
+            {% if user.is_authenticated %}
+            <form action="/Login/History/" method="POST">{% csrf_token %}
+                <input type="hidden" name="song_id" value="{{i.id}}">
+            <a  href="/Login/songs/{{i.id}}" ><button class="btn btn-primary">Listen</button></a>
+            </form>
+            {% else %}
             <a href="/Login/songs/{{i.id}}" class="btn btn-primary">Listen</a>
+            {% endif  %}
             </div>
         </div>
     </div>

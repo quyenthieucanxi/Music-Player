@@ -1,6 +1,6 @@
 import email
 from django.shortcuts import render
-from .models import Song, PersonalList
+from .models import Song, PersonalList,History
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django.shortcuts import redirect
@@ -25,11 +25,7 @@ def login_songpost(request,id):
 def songpost(request,id):
     song= Song.objects.all()
     song_id=Song.objects.filter(pk=id).first()
-    '''if request.method == "POST":
-        message = 'You need to login'
-        return redirect(request,f'/All_songs/songs/{{song_id.id}}',{'song': song,'song_id': song_id,'message':message})
-    else:
-        message= ""'''
+    
     return render(request,'All_songs/songpost.html',{'song': song,'song_id': song_id})
 def login(request):
     if request.method == "POST":
@@ -75,6 +71,7 @@ def personallist(request):
             personallist.save()
             messages = "Your Song is Succesfully Added"
         
+        
         song_id=Song.objects.filter(id=song_id).first()
         #song= Song.objects.all()
         return render(request,"Login/songpost.html",{'messages': messages,'song_id':song_id})       
@@ -86,3 +83,16 @@ def personallist(request):
     #preserved = Case(*[When(pk=pk,then=pos)for pos,pk in enumerate(listSong)])
     song = Song.objects.filter(id__in=listSong)
     return render(request,'Login/personallist.html',{'song':song})
+def history(request):
+    if request.method == "POST":
+        user = request.user
+        song_id =request.POST['song_id']
+        history_list= History(user= user,song_id= song_id)
+        history_list.save()
+        return redirect(f'/Login/songs/{song_id}',{'song_id':song_id})
+    history_List= History.objects.filter(user=request.user)
+    listSong= []
+    for i in history_List:
+        listSong.append(i.song_id)
+    song = Song.objects.filter(id__in=listSong)    
+    return render(request,"Login/history.html",{'song':song})

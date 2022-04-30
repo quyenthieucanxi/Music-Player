@@ -1,18 +1,18 @@
 {% extends 'All_songs/base.html' %}
 {% block title %}All Songs {% endblock %}
 {% block body %}
-<!-- {% if massage %}
-<script>
+{% if message %}
+<!-- <script>
    Swal.fire({
-   position: 'top-end',
-   icon: 'warning',
-   title: '{{message}}',
-   showConfirmButton: false,
-   timer: 1500
-   })
-</script>
+      position: 'top-end',
+      icon: 'success',
+      title: '{{message}}',
+      showConfirmButton: false,
+      timer: 1500
+      })
+</script> -->
+{% endif %} 
 
-{% endif%} -->
 <div class="container">
    <div class="row">
       <div class="col-md-4" style="padding-top: 5%;">
@@ -29,12 +29,11 @@
          </div>
          
          <div class="container" style="padding-top: 2%;">
-            <form action="/All_songs/songs/{{song_id.id}}" method="POST">{% csrf_token %}
-            <input type="hidden" name="check">
-            <button class="btn btn-outline-danger " type="submit"  >Add to PersonalList</button>
-            </form>
+            
+            <!-- <button class="btn btn-outline-danger " type="submit"  >Add to PersonalList</button> -->
             <div class="" style="padding-top: 3%;">
-            <a href="/media/{{song_id.audio_file}}" style="padding-left: 1%;padding-right: 1%;"><button class="btn btn-outline-danger" >Dowload Song</button></a>  
+            <a href="/media/{{song_id.audio_file}}" style="padding-left: 1%;padding-right: 1%;"><button class="btn btn-outline-danger" >Dowload Song</button></a> 
+            <a href="/Login/login/" style="padding-left: 1%;padding-right: 1%;"><button class="btn btn-outline-danger" >Add to PersonalList</button></a>   
             <button class="btn btn-outline-danger" type="submit">  Remove from personal list</button>
          </div> 
          </div>   
