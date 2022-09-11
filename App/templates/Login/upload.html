@@ -1,0 +1,45 @@
+{% extends 'Login/base.html' %}
+{% block title %}Upload{% endblock %}
+{% block body %}
+{% load static %}
+{% if send %}
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '{{send}}',
+            showConfirmButton: false,
+            timer: 1500
+            })
+        </script>
+{% endif %}
+<div class="container my-4 mx">
+    <h1 style="color: red; text-align: center; padding-top: 2%;">Upload</h1>
+    <form method="POST" action="/Login/upload/">{% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Tittle:</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="songname">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Artist:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="artistname">
+      </div>
+    
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Category:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="category">
+      </div>
+    
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Audio_link:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="audio_link">
+      </div>
+
+      <button  class="btn btn-primary"><a href="/Login/upload/"></a> Submit </button>
+
+    </form>
+</div>  
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+ 
 
 # Create your models here.
 class Song(models.Model):
@@ -11,6 +12,9 @@ class Song(models.Model):
     audio_file = models.FileField(blank=True,null=True,upload_to='audio') 
     audio_link = models.CharField(max_length=200,blank=True,null=True)
     duration=models.CharField(max_length=20)
+    category = models.TextField(blank=True,null=True)
+    listens = models.TextField(blank=True,null=True,default=0)
+
     def __str__(self) :
         return self.title       
 class PersonalList(models.Model):
